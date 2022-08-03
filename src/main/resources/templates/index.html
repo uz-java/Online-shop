@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:include="fragments.html :: head('Login Page')"></head>
+
+<body>
+<section th:include="fragments.html :: navbar"></section>
+<div sec:authorize="isAnonymous()">
+    This content is only shown to authenticated users.
+</div>
+</body>
+</html>
