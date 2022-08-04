@@ -15,8 +15,8 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @ToString
 public class UserLoginDto {
-    @NotBlank(message = "Username can not be null")
+    @NotBlank(message = "{NotBlank.Username}")
     private String username;
-    @NotBlank(message = "Password can not be null")
+    @NotBlank(message = "{NotBlank.Password}")
     private String password;
 }

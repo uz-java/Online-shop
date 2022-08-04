@@ -1,9 +1,10 @@
 package olcha.uz.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -12,12 +13,15 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 
 public class ProductCreateDto {
+    @NotBlank(message = "{NotBlank.ProductName}")
     private String name;
+    @NotBlank(message = "{NotBlank.Image}")
     private String image;
+    @NotBlank(message = "{NotBlank.Description}")
     private String description;
+    @NotBlank(message = "{NotBlank.Price}")
+    @Positive(message = "{Positive.Price}")
     private Double price;
 }

@@ -2,7 +2,6 @@ package olcha.uz.services.authService;
 
 import lombok.RequiredArgsConstructor;
 import olcha.uz.configs.security.UserDetails;
-import olcha.uz.domains.auth.AuthRole;
 import olcha.uz.domains.auth.AuthUser;
 import olcha.uz.dto.auth.UserCreateDto;
 import olcha.uz.dto.auth.UserLoginDto;
@@ -14,9 +13,6 @@ import olcha.uz.util.Utils;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

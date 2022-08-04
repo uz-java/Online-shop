@@ -2,7 +2,6 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
@@ -24,14 +23,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="/auth/login" class="btn btn-outline-success">Login</a>
-                    <a href="/auth/register" class="btn btn-outline-primary">Register</a>
-                    <a href="/auth/logout" class="btn btn-outline-danger">Logout</a>
+                    <a href="/auth/login" class="btn btn-outline-success" th:text="#{Login}"></a>
+                    <a href="/auth/register" class="btn btn-outline-primary" th:text="#{Register}"></a>
+                    <a href="/auth/logout" class="btn btn-outline-danger" th:text="#{Logout}"></a>
                 </li>
             </ul>
         </div>
     </nav>
 </section>
-
 </body>
 </html>

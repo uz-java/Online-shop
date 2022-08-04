@@ -8,8 +8,8 @@
             <div class="alert alert-warning">
                 <h1>Are you really want to sign out</h1>
             </div>
-            <button type="submit" class="btn btn-primary" onclick="clearSessionCookie();">Yes</button>
-            <a th:href="@{/}" class="btn btn-success focus">Back</a>
+            <button type="submit" class="btn btn-primary" onclick="clearSessionCookie();" th:text="#{Yes}"></button>
+            <a th:href="@{/}" class="btn btn-success focus" th:text="#{Back}"></a>
         </form>
     </div>
 </div>

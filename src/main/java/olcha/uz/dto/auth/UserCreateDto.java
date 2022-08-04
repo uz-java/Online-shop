@@ -1,14 +1,10 @@
 package olcha.uz.dto.auth;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import olcha.uz.domains.auth.AuthRole;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -20,13 +16,13 @@ import java.util.List;
 @ToString
 public class UserCreateDto {
 
-    @NotBlank(message = "FullName can not be null")
+    @NotBlank(message = "{NotBlank.FullName}")
     private String fullName;
-    @NotBlank(message = "Username can not be null")
+    @NotBlank(message = "{NotBlank.Username}")
     private String username;
-    @NotBlank(message = "Password can not be null")
+    @NotBlank(message = "{NotBlank.Password}")
     private String password;
-    @NotBlank(message = "ConfirmPassword can not be null")
+    @NotBlank(message = "{NotBlank.ConfirmPassword}")
     private String confirmPassword;
 
 }

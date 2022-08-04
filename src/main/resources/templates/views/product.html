@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments.html :: head('Product Page')"></head>
+<body>
+<div class="row" style="margin-top: 120px;margin-right: 200px; margin-left: 200px">
+    <div class="col-md-6 offset-3">
+        <form method="post" th:action="@{/views/product}" th:object="${productCreateDto}">
+
+            <div class="form-group">
+                <label for="forName" th:text="#{ProductName}"></label>
+                <input type="text" name="name" class="form-control" th:field="*{name}" id="forName">
+                <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="forImage" th:text="#{Image}"></label>
+                <input type="text" name="image" class="form-control" th:field="*{image}" id="forImage">
+                <div style="color: red" th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="Description" th:text="#{Description}"></label>
+                <input type="text" name="description" class="form-control" th:field="*{description}" id="Description">
+                <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="Price" th:text="#{Price}"></label>
+                <input type="number" name="price" class="form-control" th:field="*{price}" id="Price">
+                <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="error"></div>
+            </div>
+            <button type="submit" class="btn btn-primary" th:text="#{Save}"></button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
