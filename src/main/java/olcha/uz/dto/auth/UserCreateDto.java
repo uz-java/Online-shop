@@ -6,6 +6,8 @@ import lombok.Setter;
 import lombok.ToString;
 import olcha.uz.domains.auth.AuthRole;
 
+import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -16,11 +18,15 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-@Builder
 public class UserCreateDto {
+
+    @NotBlank(message = "FullName can not be null")
     private String fullName;
+    @NotBlank(message = "Username can not be null")
     private String username;
+    @NotBlank(message = "Password can not be null")
     private String password;
-    private String configPassword;
-    private List<AuthRole> authRoles;
+    @NotBlank(message = "ConfirmPassword can not be null")
+    private String confirmPassword;
+
 }

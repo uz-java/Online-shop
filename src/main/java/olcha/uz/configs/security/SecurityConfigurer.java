@@ -53,8 +53,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                         httpSecurityFormLoginConfigurer
                                 .loginPage("/auth/login")
                                 .loginProcessingUrl("/auth/login")
-                                .usernameParameter("uname")
-                                .passwordParameter("pswd")
+                                .usernameParameter("username")
+                                .passwordParameter("password")
                                 .defaultSuccessUrl("/user", false))
                 .rememberMe(httpSecurityRememberMeConfigurer ->
                         httpSecurityRememberMeConfigurer
@@ -71,6 +71,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                                 .deleteCookies("JSESSIONID", "remember")
                                 .clearAuthentication(true)
                                 .invalidateHttpSession(true)
+
                 );
         //                .authenticationEntryPoint(authenticationEntryPoint);
     }

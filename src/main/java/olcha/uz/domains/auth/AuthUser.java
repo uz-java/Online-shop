@@ -1,6 +1,7 @@
 package olcha.uz.domains.auth;
 
 import lombok.*;
+import olcha.uz.domains.address.Address;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@ToString
 @Builder
 @Table(name = "authUser")
 public class AuthUser {
@@ -30,13 +30,23 @@ public class AuthUser {
     @Column(nullable = false, columnDefinition = "bool default true")
     private boolean active;
 
+    @ManyToMany(targetEntity = Address.class,
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "authUser_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "address_id", referencedColumnName = "id")
+    )
+    private List<Address> address = new ArrayList<>();
+
+
+
     @ManyToMany(targetEntity = AuthRole.class,
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+            fetch = FetchType.LAZY)
     @JoinTable(
-            joinColumns = @JoinColumn(name = "auth_user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "auth_role_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "authUser_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "authRole_id", referencedColumnName = "id")
     )
     private List<AuthRole> roles = new ArrayList<>();
-
 }

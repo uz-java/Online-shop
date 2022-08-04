@@ -6,8 +6,8 @@
 
 <body>
 <section th:include="fragments.html :: navbar"></section>
-<div sec:authorize="isAnonymous()">
-    This content is only shown to authenticated users.
+<div>
+    <h1>This content is only shown to authenticated users</h1>
 </div>
 </body>
 </html>

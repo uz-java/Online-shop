@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,33 +31,31 @@ public class AuthService implements UserDetailsService {
         return new UserDetails(authUser);
     }
 
-    public Long login(UserLoginDto userLoginDto) {
+    public void login(UserLoginDto userLoginDto) {
         AuthUser user = authRepository.findByUsername(userLoginDto.getUsername())
                 .orElseThrow(() -> new NotFoundException("User not found by username %s".formatted(userLoginDto.getUsername())));
 
         if (!Utils.matchPassword(userLoginDto.getPassword(), user.getPassword())) {
             throw new UnAuthorizedException("Password do not match");
         }
-        return user.getId();
     }
 
-    public Long create(UserCreateDto userCreateDto) {
+    public void create(UserCreateDto userCreateDto) {
         if (authRepository.findByUsername(userCreateDto.getUsername()).isPresent()) {
             throw new MethodNotAllowedException("Username already taken %s".formatted(userCreateDto.getUsername()));
         }
 
-        if (!userCreateDto.getPassword().equals(userCreateDto.getConfigPassword()))
+        if (!userCreateDto.getPassword().equals(userCreateDto.getConfirmPassword()))
             throw new MethodNotAllowedException("Password do not match");
+
 
         AuthUser userBuild = AuthUser.builder()
                 .fullName(userCreateDto.getFullName())
                 .username(userCreateDto.getUsername())
                 .password(Utils.encode(userCreateDto.getPassword()))
-                .roles(List.of(AuthRole.builder()
-                        .code("USER")
-                        .name("User").build()))
+                .active(true)
                 .build();
 
-        return authRepository.save(userBuild).getId();
+        authRepository.save(userBuild);
     }
 }

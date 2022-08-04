@@ -4,37 +4,36 @@
 <body>
 <div class="row" style="margin-top: 120px;margin-right: 200px; margin-left: 200px">
     <div class="col-md-6 offset-3">
-        <form method="post" th:action="@{/auth/register.html}">
+        <form method="post" th:action="@{/auth/register}" th:object="${userCreateDto}">
 
             <div class="form-group">
                 <label for="forFullName">Fullname</label>
-                <input type="text" name="fullName" class="form-control" id="forFullName" placeholder="Enter fullname">
+                <input type="text" name="fullName" class="form-control" th:field="*{fullName}" id="forFullName" placeholder="Enter fullName">
+                <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="error"></div>
             </div>
 
             <div class="form-group">
                 <label for="forUsername">Username</label>
-                <input type="text" name="username" class="form-control" id="forUsername" placeholder="Enter username">
+                <input type="text" name="username" class="form-control" th:field="*{username}" id="forUsername" placeholder="Enter username">
+                <div style="color: red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error"></div>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                       placeholder="Password">
+                <input type="password" name="password" class="form-control" th:field="*{password}" id="exampleInputPassword1" placeholder="Password">
+                <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"></div>
             </div>
 
             <div class="form-group">
                 <label for="confirmPassword">Confirm password</label>
-                <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
-                       placeholder="Confirm password">
+                <input type="password" name="confirmPassword" class="form-control" th:field="*{confirmPassword}" id="confirmPassword" placeholder="Confirm password">
+                <div style="color: red" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="error"></div>
             </div>
 
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="remember-me" name="rememberMe">
                 <label class="form-check-label" for="remember-me">Remember me ?</label>
             </div>
-          <!--  <li class="nav-item">
-                <a href="/auth/register" class="btn btn-outline-primary">Register</a>
-            </li>-->
             <button type="submit" class="btn btn-primary">register</button>
         </form>
     </div>

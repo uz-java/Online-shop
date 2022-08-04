@@ -5,13 +5,15 @@ import olcha.uz.dto.auth.UserCreateDto;
 import olcha.uz.dto.auth.UserLoginDto;
 import olcha.uz.services.authService.AuthService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
 
 @Controller
@@ -22,31 +24,33 @@ public class AuthController {
     private final AuthService authService;
 
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(Model model) {
+        model.addAttribute("userLoginDto", new UserLoginDto());
         return "auth/login";
     }
 
     @PostMapping("/login")
-    public void login(@ModelAttribute UserLoginDto userLoginDto, HttpServletResponse response) throws IOException {
-        Long userId = authService.login(userLoginDto);
-        Cookie cookie = new Cookie("userId", String.valueOf(userId));
-        response.addCookie(cookie);
-        response.sendRedirect("/");
+    public String login(@Valid @ModelAttribute("userLoginDto") UserLoginDto userLoginDto, HttpServletResponse response, BindingResult result) throws IOException {
+        if (result.hasErrors()) {
+            return "auth/login";
+        }
+        authService.login(userLoginDto);
+        return "redirect:/";
     }
 
     @GetMapping(value = "/register")
-    public String registerPage(@ModelAttribute("userCreateDto") UserCreateDto userCreateDto) {
+    public String registerPage(Model model) {
+        model.addAttribute("userCreateDto", new UserCreateDto());
         return "auth/register";
     }
 
     @PostMapping(value = "/register")
-    public void register(@ModelAttribute("userCreateDto") UserCreateDto userCreateDto,HttpServletResponse response) throws IOException {
-        System.out.println(userCreateDto);
-        Long userId=authService.create(userCreateDto);
-        System.out.println(userId);
-        Cookie cookie=new Cookie("userId",String.valueOf(userId));
-        response.addCookie(cookie);
-        response.sendRedirect("/");
+    public String register(@ModelAttribute("userCreateDto") @Valid UserCreateDto userCreateDto, BindingResult result) throws IOException {
+        if (result.hasErrors() || !userCreateDto.getPassword().equals(userCreateDto.getConfirmPassword())) {
+            return "auth/register";
+        }
+        authService.create(userCreateDto);
+        return "redirect:/";
     }
 
 
