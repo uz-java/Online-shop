@@ -17,5 +17,5 @@ import lombok.Setter;
 
 public class CategoryCreateDto {
     private String name;
-    private String code;
+     private String code;
 }

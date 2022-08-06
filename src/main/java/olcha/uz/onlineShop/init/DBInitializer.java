@@ -25,7 +25,7 @@ public class DBInitializer implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext context) throws BeansException {
 
         AuthRoleRepository authRoleRepository = context.getBean(AuthRoleRepository.class);
-        AuthPermissionRepository authPermissionRepository = context.getBean(AuthPermissionRepository.class);
+         AuthPermissionRepository authPermissionRepository = context.getBean(AuthPermissionRepository.class);
         AuthRepository repository = context.getBean(AuthRepository.class);
         authPermissionRepository.deleteAll();
         authRoleRepository.deleteAll();

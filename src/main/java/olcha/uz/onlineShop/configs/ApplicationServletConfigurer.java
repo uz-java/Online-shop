@@ -33,7 +33,7 @@ public class ApplicationServletConfigurer extends AbstractAnnotationConfigDispat
     protected FrameworkServlet createDispatcherServlet(WebApplicationContext servletAppContext) {
         DispatcherServlet dispatcher = (DispatcherServlet) super.createDispatcherServlet(servletAppContext);
         dispatcher.setThrowExceptionIfNoHandlerFound(true);
-        return dispatcher;
+        return  dispatcher;
     }
 
 }

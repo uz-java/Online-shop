@@ -32,7 +32,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     };
 
     @Value("${spring.security.rememberme.secret.key}")
-    public String SECRET_KEY;
+    public  String SECRET_KEY;
 
     private final AuthService authService;
     private final PasswordEncoder passwordEncoder;

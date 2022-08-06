@@ -40,7 +40,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/product")
-    public String productAdd(@Valid @ModelAttribute("productCreateDto") ProductCreateDto productCreateDto, BindingResult result, @RequestParam("image") MultipartFile file, @RequestParam("categoryId") Long id){
+     public String productAdd(@Valid @ModelAttribute("productCreateDto") ProductCreateDto productCreateDto, BindingResult result, @RequestParam("image") MultipartFile file, @RequestParam("categoryId") Long id){
         System.out.println("productCreateDto = " + productCreateDto);
         if (result.hasErrors()) {
             return "views/product";

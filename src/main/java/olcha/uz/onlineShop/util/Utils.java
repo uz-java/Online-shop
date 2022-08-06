@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-public class Utils {
+public class  Utils {
 
     public static boolean isParsable(String timeAsString) {
         try {

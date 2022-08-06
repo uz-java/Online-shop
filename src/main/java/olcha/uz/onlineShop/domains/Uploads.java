@@ -25,7 +25,7 @@ public class Uploads {
     private String originalName;
     private String generatedName;
     private long size;
-    private String contentType;
+     private String contentType;
 
 
  /*   @OneToOne(targetEntity = Product.class,fetch = FetchType.EAGER)

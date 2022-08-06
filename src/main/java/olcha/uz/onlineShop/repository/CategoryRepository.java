@@ -10,7 +10,7 @@ import java.util.Optional;
  * @since 04/08/22 18:07 (Thursday)
  * SpringMyProject/IntelliJ IDEA
  */
-public interface CategoryRepository extends JpaRepository<Category,Long> {
+public interface  CategoryRepository extends JpaRepository<Category,Long> {
 
     Optional<Category> findById(Long id);
 }

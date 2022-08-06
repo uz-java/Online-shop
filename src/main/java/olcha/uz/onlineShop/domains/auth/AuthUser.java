@@ -21,7 +21,7 @@ public class AuthUser {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(unique = true, nullable = false)
+     @Column(unique = true, nullable = false)
     private String username;
 
     @Column(nullable = false)

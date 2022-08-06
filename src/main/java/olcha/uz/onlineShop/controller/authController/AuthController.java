@@ -22,7 +22,7 @@ public class AuthController {
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) throws IOException {
         ModelAndView modelAndView = new ModelAndView("auth/login");
         if (error != null) {
-            modelAndView.addObject("error", error);
+             modelAndView.addObject("error", error);
         }
         return modelAndView;
     }

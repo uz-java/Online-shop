@@ -7,5 +7,5 @@ package olcha.uz.onlineShop.enams;
  */
 public enum FavoritesStatus {
     LIKE,
-    UNLIKE
+     UNLIKE
 }

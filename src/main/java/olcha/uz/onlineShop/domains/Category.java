@@ -26,7 +26,7 @@ public class Category {
     private String name;
     private String code;
 
-    @ManyToMany(targetEntity = Vendor.class,
+     @ManyToMany(targetEntity = Vendor.class,
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )

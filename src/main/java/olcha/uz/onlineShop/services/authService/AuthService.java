@@ -27,7 +27,7 @@ public class AuthService implements UserDetailsService {
         return new UserDetails(authUser);
     }
 
-    public void login(UserLoginDto userLoginDto) {
+    public void  login(UserLoginDto userLoginDto) {
         AuthUser user = authRepository.findByUsername(userLoginDto.getUsername())
                 .orElseThrow(() -> new NotFoundException("User not found by username %s".formatted(userLoginDto.getUsername())));
 

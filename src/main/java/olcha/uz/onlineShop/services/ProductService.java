@@ -55,7 +55,7 @@ public class ProductService {
                 .category(category.get())
                 .build();
         productRepository.save(product);
-    }
+     }
 
     public List<Product> getAll(Long id) {
         Optional<List<Product>> productList = productRepository.findAllById(id);

@@ -31,6 +31,6 @@ public class Basket {
     private AuthUser authUser;
 
     @OneToOne(targetEntity = Product.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
+     @JoinColumn(name = "product_id")
     private Product product;
 }

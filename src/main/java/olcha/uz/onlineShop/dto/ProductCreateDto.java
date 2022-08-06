@@ -22,7 +22,7 @@ public class ProductCreateDto {
     //private Uploads image;
 
     @NotBlank(message = "{NotBlank.Description}")
-    private String description;
+     private String description;
 
     //@Positive(message = "{Positive.Price}")
     private Double price;

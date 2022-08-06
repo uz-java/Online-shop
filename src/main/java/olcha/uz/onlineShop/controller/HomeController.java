@@ -21,7 +21,7 @@ public class HomeController {
 
     @RequestMapping(value = "")
     @PreAuthorize("permitAll()")
-    public String homePage() {
+     public String homePage() {
         return "index";
     }
 

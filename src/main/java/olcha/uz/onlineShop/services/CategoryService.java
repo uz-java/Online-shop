@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class CategoryService {
+public class  CategoryService {
     private final CategoryRepository categoryRepository;
 
     public Category findById(Long id) {

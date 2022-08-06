@@ -29,5 +29,5 @@ public class Vendor {
     private String notion_food;
     private LocalDateTime delivery_time_from;
     private LocalDateTime delivery_time_to;
-    private Double delivery_price;
+     private Double delivery_price;
 }
