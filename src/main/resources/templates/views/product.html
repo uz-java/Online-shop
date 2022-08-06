@@ -4,7 +4,7 @@
 <body>
 <div class="row" style="margin-top: 120px;margin-right: 200px; margin-left: 200px">
     <div class="col-md-6 offset-3">
-        <form method="post" th:action="@{/views/product}" th:object="${productCreateDto}">
+        <form method="post" th:action="@{/views/product}" enctype="multipart/form-data" th:object="${productCreateDto}">
 
             <div class="form-group">
                 <label for="forName" th:text="#{ProductName}"></label>
@@ -14,8 +14,7 @@
 
             <div class="form-group">
                 <label for="forImage" th:text="#{Image}"></label>
-                <input type="text" name="image" class="form-control" th:field="*{image}" id="forImage">
-                <div style="color: red" th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="error"></div>
+                <input type="file" name="image" class="form-control" id="forImage">
             </div>
 
             <div class="form-group">

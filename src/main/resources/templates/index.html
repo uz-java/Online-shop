@@ -1,60 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:include="fragments.html :: head('Home Page')"></head>
-<body>
-<section th:include="fragments.html :: navbar"></section>
-<nav aria-label="Pagination">
-    <ul class="pagination">
-        <th:block th:if="${page.hasPrevious()}">
-            <li class="page-item">
-                <a class="page-link" th:href="@{'?page='+${page.previousPageable().pageNumber}}"
-                   tabindex="-1">Previous</a>
-            </li>
-        </th:block>
+<body style="overflow-y: scroll;">
+<div th:include="fragments.html :: navbar"></div>
 
-        <th:block th:each="pageNumber : ${pageNumbers}">
-            <li th:class="page-item" th:classappend="${page.number == pageNumber} ? active : ''"><a
-                    class="page-link" th:href="@{'?page=' + ${pageNumber}}"
-                    th:text="${pageNumber+1}"></a></li>
-        </th:block>
-
-        <th:block th:if="${page.hasNext()}">
-            <li class="page-item">
-                <a class="page-link" th:href="@{'?page='+${page.nextPageable().pageNumber}}" tabindex="-1">Next</a>
-            </li>
-        </th:block>
-    </ul>
-</nav>
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col" th:text="#{}"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="url,count : ${page.getContent()}">
-        <tr>
-            <td th:text="${count.count+(page.number*10)}"></td>
-
-            <td>
-                <a th:href="@{'/go/'+${url.shortenedUrl}}" th:text="${url.description}"></a>
-            </td>
-            <td>
-                <button type="button" class="btn btn-success" th:data-name="${url.originalUrl}"
-                        th:onclick="myFunction(this.getAttribute('data-name'))">Copy
-                </button>
-            </td>
-        </tr>
-    </th:block>
-    </tbody>
-</table>
-
-
-<script th:inline="javascript">
-    function myFunction(input) {
-        navigator.clipboard.writeText(input);
-    }
-</script>
 </body>
 </html>

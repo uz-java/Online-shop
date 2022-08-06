@@ -7,7 +7,7 @@
         <form method="post" th:action="@{/auth/register}" th:object="${userCreateDto}">
 
             <div class="form-group">
-                <label for="forFullName" th:text="#{FullName}"></label>
+                <label for="forFullName" th:text="#{FullName}"><i class="fa fa-user"></i></label>
                 <input type="text" name="fullName" class="form-control" th:field="*{fullName}" id="forFullName">
                 <div style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="error"></div>
             </div>

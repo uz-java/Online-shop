@@ -6,7 +6,7 @@
     <div class="col-md-6 offset-3">
         <form method="post" th:action="@{/auth/logout}">
             <div class="alert alert-warning">
-                <h1>Are you really want to sign out</h1>
+                <h1 th:text="#{message.logout}"></h1>
             </div>
             <button type="submit" class="btn btn-primary" onclick="clearSessionCookie();" th:text="#{Yes}"></button>
             <a th:href="@{/}" class="btn btn-success focus" th:text="#{Back}"></a>
