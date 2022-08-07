@@ -1,18 +1,22 @@
 package olcha.uz.onlineShop.dto;
 
 import lombok.*;
+import olcha.uz.onlineShop.domains.Uploads;
 
 /**
  * @author "Tojaliyev Asliddin"
- * @since 04/08/22 17:59 (Thursday)
+ * @since 07/08/22 23:15 (Sunday)
  * SpringMyProject/IntelliJ IDEA
  */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@Builder
+public class ProductUpdateDto {
 
-public class CategoryCreateDto {
+    private Long id;
     private String name;
+    private String description;
+    private Double price;
 }

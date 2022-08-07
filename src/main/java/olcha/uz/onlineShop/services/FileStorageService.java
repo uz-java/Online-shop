@@ -1,6 +1,7 @@
 package olcha.uz.onlineShop.services;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import olcha.uz.onlineShop.domains.Uploads;
 import olcha.uz.onlineShop.exceptions.NotFoundException;
 import olcha.uz.onlineShop.repository.FileStorageRepository;
@@ -29,20 +30,12 @@ import java.util.List;
  */
 
 @Service
+@RequiredArgsConstructor
 public class FileStorageService {
-    private final Path rootPath;
+    private final Path rootPath=Path.of("/home/asliddin/IdeaProjects/Spring_my/SpringMyProject/src/main/resources/static/images");
     private final FileStorageRepository fileStorageRepository;
 
-    public FileStorageService(@Value("${file.upload.path}") String uploadPath, FileStorageRepository dao) {
-        this.rootPath = Paths.get(uploadPath);
-        this.fileStorageRepository = dao;
-    }
 
-    public void init() throws IOException {
-        if (!Files.exists(rootPath)) {
-            Files.createDirectories(rootPath);
-        }
-    }
 
     @Transactional
     public Uploads upload(MultipartFile multipartFile) {
@@ -53,17 +46,18 @@ public class FileStorageService {
 
             String filename = StringUtils.getFilename(originalFilename);
             String filenameExtension = StringUtils.getFilenameExtension(originalFilename);
-            String generateName = System.currentTimeMillis() + "." + filenameExtension;
-            String path = "/uploads/" + generateName;
+            String generatedName = System.currentTimeMillis() + "." + filenameExtension;
+            String path = "\\static\\images\\" + generatedName;
             Uploads uploads = Uploads.builder()
                     .contentType(contentType)
                     .originalName(filename)
                     .size(size)
-                    .generatedName(generateName)
+                    .generatedName(generatedName)
                     .path(path)
                     .build();
 
-            Path uploadPath = rootPath.resolve(generateName);
+
+            Path uploadPath = rootPath.resolve(generatedName);
             fileStorageRepository.save(uploads);
             Files.copy(multipartFile.getInputStream(), uploadPath, StandardCopyOption.REPLACE_EXISTING);
             return uploads;
@@ -71,6 +65,7 @@ public class FileStorageService {
             throw new RuntimeException("Something wrong try again");
         }
     }
+
 
     public ResponseEntity<Resource> download(@NonNull String filename){
         Path path=rootPath.resolve(filename);

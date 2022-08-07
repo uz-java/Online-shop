@@ -5,6 +5,7 @@ import lombok.Setter;
 import olcha.uz.onlineShop.domains.Uploads;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -17,13 +18,8 @@ import javax.validation.constraints.NotBlank;
 public class ProductCreateDto {
     @NotBlank(message = "{NotBlank.ProductName}")
     private String name;
-   /* @NotBlank(message = "{NotBlank.Image}")
-    private String image;*/
-    //private Uploads image;
-
     @NotBlank(message = "{NotBlank.Description}")
      private String description;
-
-    //@Positive(message = "{Positive.Price}")
+    @Positive(message = "{Positive.Price}")
     private Double price;
 }

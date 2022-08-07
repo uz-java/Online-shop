@@ -11,8 +11,11 @@ import java.util.Optional;
  * @since 04/08/22 21:00 (Thursday)
  * SpringMyProject/IntelliJ IDEA
  */
-public interface  ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByName(String name);
-    Optional<List<Product>> findAllById(Long id);
+
+    Optional<Product> findById(Long id);
+
+    Optional<List<Product>> findByActiveTrue();
 
 }

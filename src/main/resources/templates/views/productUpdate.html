@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments.html :: head('Product Update Page')"></head>
+<body>
+<div class="row" style="margin-top: 120px;margin-right: 200px; margin-left: 200px">
+    <div class="col-md-6 offset-3">
+        <form method="post" th:action="@{/views/product/update}">
+
+            <div class="form-group">
+                <input type="hidden" name="id" class="form-control" th:value="${product.id}"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" th:value="${product.name}"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="description" class="form-control" th:value="${product.description}"/>
+            </div>
+            <div class="form-group">
+                <input type="text" name="price" class="form-control" th:value="${product.price}"/>
+            </div>
+
+            <a th:href="@{#}" class="btn btn-success">Go Back</a>
+            <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

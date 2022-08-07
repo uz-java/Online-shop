@@ -27,8 +27,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     public static final String[] WHITE_LIST = new String[]{
             "/",
             "/auth/login",
+            "/views/basket",
             "/auth/register",
-            "/static/**"
+            "/static/**",
+            "/apps/onlineShop/**"
     };
 
     @Value("${spring.security.rememberme.secret.key}")
