@@ -10,13 +10,13 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../static/font/1.jpeg" class="d-block w-100" alt="Image 1">
+            <img src="../static/font/3.jpeg" class="d-block w-100" alt="Image 1">
         </div>
         <div class="carousel-item">
             <img src="../static/font/2.jpeg" class="d-block w-100" alt="Image 2">
         </div>
         <div class="carousel-item">
-            <img src="../static/font/3.jpeg" class="d-block w-100" alt="Image 3">
+            <img src="../static/font/1.jpeg" class="d-block w-100" alt="Image 3">
         </div>
         <div class="carousel-item">
             <img src="../static/font/4.jpeg" class="d-block w-100" alt="Image 4">
@@ -79,7 +79,7 @@
                         <i style="display:block;">Price : <i th:text="${product.price}"></i></i>
                         <a class="btn btn-warning" th:href="@{'/views/basket'+${product.id}}" th:text="#{Add.to.basket}"></a>
                         <br>
-                        <a sec:authorize="isAuthenticated() && hasRole('ADMIN')"  class="btn btn-success" th:href="@{'/views/productUpdate'}" th:text="#{Update}"></a>
+                        <a sec:authorize="isAuthenticated() && hasRole('ADMIN')"  class="btn btn-success" th:href="@{'/views/productUpdate/'+${product.id}}" th:text="#{Update}"></a>
                     </div>
                 </div>
             </div>

@@ -12,4 +12,5 @@ import java.util.Optional;
  */
 public interface  FileStorageRepository extends JpaRepository<Uploads,Long> {
     Optional<Uploads> findByGeneratedName(String generatedName);
+    Optional<Uploads> findById(Long id);
 }

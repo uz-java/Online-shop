@@ -9,9 +9,11 @@ import olcha.uz.onlineShop.repository.BasketItemRepository;
 import olcha.uz.onlineShop.repository.ProductRepository;
 import olcha.uz.onlineShop.repository.authRepository.AuthRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -25,7 +27,14 @@ public class BasketItemService {
     private final ProductRepository productRepository;
     private final AuthRepository authRepository;
     public List<Basket_Item> findAllUserId(Long id) {
-        return basketItemRepository.findAllByAuthUserIdAndActive(id,Boolean.TRUE).orElse(new ArrayList<>());
+        return basketItemRepository.findAllByAuthUserId(id).orElse(new ArrayList<>());
+    }
+
+    @Transactional
+    public void cancelToBasket(Long id, Long userId) {
+        basketItemRepository.removeByProductIdAndAuthUserId(id, userId).orElseThrow(() -> {
+            throw new RuntimeException("BasketItemFailed to delete BasketItem");
+        });
     }
 
     public void saveToBasket(Long id, Long user_id) {
@@ -36,14 +45,17 @@ public class BasketItemService {
             throw new RuntimeException("User not found");
         });
 
-        Basket_Item basketItem=Basket_Item.builder()
-                .quantity(0)
-                .authUser(user)
-                .product(product)
-                .active(true)
-                .build();
-
-        basketItemRepository.save(basketItem);
-
+        Basket_Item basket = basketItemRepository.findByProductIdAndAuthUserId(id, user_id).orElse(null);
+        if(Objects.isNull(basket)){
+            Basket_Item basketItem=Basket_Item.builder()
+                    .quantity(0)
+                    .authUser(user)
+                    .product(product)
+                    .build();
+            basketItemRepository.save(basketItem);
+        }else {
+            basket.setQuantity(basket.getQuantity()+1);
+            basketItemRepository.save(basket);
+        }
     }
 }

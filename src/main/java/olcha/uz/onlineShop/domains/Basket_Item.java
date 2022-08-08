@@ -29,7 +29,4 @@ public class Basket_Item {
     private AuthUser authUser;
     @ManyToOne
     private Product product;
-
-    @Column(nullable = false, columnDefinition = "bool default true")
-    private boolean active;
 }

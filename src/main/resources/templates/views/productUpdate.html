@@ -2,44 +2,50 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments.html :: head('Product Update Page')"></head>
 <body>
-
 <div class="row" style="margin-top: 120px;margin-right: 200px; margin-left: 200px">
-    <div class="col-md-6 offset-3">
-        <form method="post" th:action="@{/views/product/update}">
+    <div class="offset-2 col-md-8">
+        <form method="post" th:action="@{/views/productUpdate}">
+
             <div class="form-group">
                 <input type="hidden" name="id" class="form-control" th:value="${product.id}"/>
             </div>
             <div class="form-group">
                 <label>
-                    <input type="text" name="name" class="form-control" th:value="${product.name}"/>
+                    <label for="forName" th:text="#{ProductName}"></label>
+                    <input type="text" name="name" id="forName" class="form-control" th:value="${product.name}"/>
                 </label>
             </div>
             <div class="form-group">
                 <label>
-                    <input type="text" name="description" class="form-control" th:value="${product.description}"/>
+                    <label for="Description" th:text="#{Description}"></label>
+                    <input type="text" name="description" id="Description" th:field="*{product.description}"
+                           class="form-control" th:value="${product.description}"/>
                 </label>
             </div>
             <div class="form-group">
                 <label>
-                    <input type="text" name="price" class="form-control" th:value="${product.price}"/>
+                    <label for="forName" th:text="#{Price}"></label>
+                    <input type="number" name="price" class="form-control" th:value="${product.price}"/>
                 </label>
             </div>
-            <a th:href="@{#}" class="btn btn-success">Go Back</a>
-            <button type="submit" class="btn btn-primary">Yes</button>
+
+            <div class="form-group">
+                <input type="hidden" name="imageId" class="form-control" th:value="${product.image.id}"/>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="active" class="form-control" th:value="${product.active}"/>
+            </div>
+
+            <div class="btn-toolbar">
+                <a th:href="@{/}" class="btn btn-outline-success" th:text="#{Back}"></a>
+                <br>
+                <button type="submit" class="btn btn-outline-warning" th:text="#{Yes}"></button>
+            </div>
+
         </form>
     </div>
 </div>
-
-<section>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-</section>
+<div th:include="fragments.html :: js_files"></div>
 </body>
 </html>

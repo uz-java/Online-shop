@@ -7,9 +7,7 @@ import olcha.uz.onlineShop.domains.poduct.Product;
 import olcha.uz.onlineShop.dto.ProductCreateDto;
 import olcha.uz.onlineShop.dto.ProductUpdateDto;
 import olcha.uz.onlineShop.services.BasketItemService;
-import olcha.uz.onlineShop.services.CategoryService;
 import olcha.uz.onlineShop.services.ProductService;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,22 +34,17 @@ public class ProductController {
 
 
     @GetMapping("/basket")
-    public String ProductPage(Model model,@AuthenticationPrincipal UserDetails userDetails) {
-        List<Basket_Item> basketItems=new ArrayList<>();
-        if (Objects.nonNull(userDetails)){
-           basketItems = basketItemService.findAllUserId(userDetails.getId());
+    public String ProductPage(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+        List<Basket_Item> basketItems = new ArrayList<>();
+        if (Objects.nonNull(userDetails)) {
+            basketItems = basketItemService.findAllUserId(userDetails.getId());
         }
-        List<Product> products=productService.findAllBasketItemsId(basketItems);
-        model.addAttribute("products",products);
+        List<Product> products = productService.findAllBasketItemsId(basketItems);
+        model.addAttribute("products", products);
         return "views/basket";
     }
 
 
-    @GetMapping("/cancel/{id}")
-    public String cancelCartPage(@PathVariable Long id) {
-        productService.cancelToBasket(id);
-        return "redirect:/views/basket";
-    }
     @GetMapping(value = "/product")
     public String productPage(Model model) {
         model.addAttribute("productCreateDto", new ProductCreateDto());
@@ -60,7 +53,6 @@ public class ProductController {
 
     @PostMapping(value = "/product")
     public String productAdd(@Valid @ModelAttribute("productCreateDto") ProductCreateDto productCreateDto, BindingResult result, @RequestParam("image") MultipartFile file) {
-
         if (result.hasErrors()) {
             return "views/product";
         }
@@ -68,23 +60,16 @@ public class ProductController {
         return "redirect:/";
     }
 
-    @GetMapping("/product/update/{id}")
-    public String updatePage(@PathVariable Long id,Model model){
-        System.out.println("id = " + id);
+    @GetMapping("/productUpdate/{id}")
+    public String updatePage(@PathVariable Long id, Model model) {
         model.addAttribute("product",productService.get(id));
         return "views/productUpdate";
     }
 
-    @GetMapping("/productUpdate")
-    public String getUpdatePage(){
-        return "views/productUpdate";
-    }
-
-    @PostMapping("/product/update")
-    public String update(@ModelAttribute ProductUpdateDto dto){
-        productService.update(dto);
+    @PostMapping("/productUpdate")
+    public String update(@ModelAttribute("productUpdateDto") ProductUpdateDto productUpdateDto) {
+        System.out.println("productUpdateDto ======= " + productUpdateDto);
+        productService.update(productUpdateDto);
         return "redirect:/";
     }
-
-
 }

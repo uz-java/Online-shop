@@ -13,6 +13,10 @@ import java.util.Optional;
  */
 public interface BasketItemRepository extends JpaRepository<Basket_Item, Long> {
 
-    Optional<List<Basket_Item>> findAllByAuthUserIdAndActive(Long id, Boolean active);
+    Optional<List<Basket_Item>> findAllByAuthUserId(Long id);
     Optional<Basket_Item> findByProductId(Long id);
+
+    Optional<Basket_Item> findByProductIdAndAuthUserId(Long product_id,Long user_id);
+
+    Optional<Basket_Item> removeByProductIdAndAuthUserId(Long productId,Long userId);
 }

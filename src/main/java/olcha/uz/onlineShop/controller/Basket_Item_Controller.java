@@ -10,10 +10,7 @@ import olcha.uz.onlineShop.services.ProductService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,6 +36,20 @@ public class Basket_Item_Controller {
 
     @GetMapping("/basket{id}")
     public String saveCartPage(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails){
+        basketItemService.saveToBasket(id,userDetails.getId());
+        return "redirect:/";
+    }
+
+    @GetMapping("/cancel/{id}")
+    public String cancelCartPage(@PathVariable Long id,@AuthenticationPrincipal UserDetails userDetails) {
+        basketItemService.cancelToBasket(id,userDetails.getId());
+        return "redirect:/views/basket";
+    }
+
+    @GetMapping("/buy/{id}")
+    public String basketInput(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails, @RequestParam("quantity") String quantity){
+        System.out.println("quantity = " + quantity);
+        System.out.println("id = " + id);
         basketItemService.saveToBasket(id,userDetails.getId());
         return "redirect:/";
     }

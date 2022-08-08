@@ -28,6 +28,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
             "/",
             "/auth/login",
             "/views/basket",
+            "/views/productUpdate",
             "/auth/register",
             "/static/**",
             "/apps/onlineShop/**"
@@ -76,7 +77,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                                 .clearAuthentication(true)
                                 .invalidateHttpSession(true)
 
-                );//                .authenticationEntryPoint(authenticationEntryPoint);
+                );//.authenticationEntryPoint(authenticationEntryPoint);
     }
 
 

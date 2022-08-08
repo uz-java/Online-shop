@@ -8,39 +8,45 @@
 <div th:include="fragments.html :: navbar"></div>
 
 <div sec:authorize="isAuthenticated() || isAnonymous()">
-  <div class="row m-4">
-    <th:block th:each="product, counter: ${products}">
-      <div class="col-2">
-        <div class="card p-2 baseBlock" style="width: 100%">
-          <img class="card-img-top" th:src="${product.image.path}" width="240"
-               height="120"
-               alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title" th:text="${product.name}"></h5>
-            <i style="display:block;">Description : <i th:text="${product.description}"></i></i>
-            <i style="display:block;">Price : <i th:text="${product.price}"></i></i>
+    <div class="row m-4">
 
+        <th:block th:each="product, counter: ${products}">
+            <div class="col-2">
+                <div class="card p-2 baseBlock" style="width: 100%">
+                    <img class="card-img-top" th:src="${product.image.path}" width="240"
+                         height="120"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${product.name}"></h5>
+                        <i style="display:block;">Description : <i th:text="${product.description}"></i></i>
+                        <i style="display:block;">Price : <i th:text="${product.price}"></i></i>
+                     <!--   <label for="quantity"></label>
+                        <input  type="text" id="quantity" name="quantity" th:placeholder="#{quantity}">-->
+                        <br>
+                        <div class="btn-toolbar">
+                            <a class="btn btn-outline-success" th:href="@{'/views/cancel/'+${product.id}}"
+                               th:text="#{Cancel}"></a>
+                            <br>
+                            <a class="btn btn-outline-warning" th:href="@{'/views/buy/'+${product.id}}"
+                               th:text="#{Buy}"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </th:block>
 
-            <a class="btn btn-secondary" th:href="@{'/views/cancel/'+${product.id}}" th:text="#{Cancel}"></a>
-            <br>
-            <a class="btn btn-warning" th:href="@{'/views/buy/'+${product.id}}" th:text="#{Buy}"></a>
-          </div>
-        </div>
-      </div>
-    </th:block>
-  </div>
+    </div>
 </div>
-
 <section>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-          crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-          crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-          crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </section>
 </body>
 </html>
