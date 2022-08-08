@@ -33,7 +33,6 @@ public class HomeController {
         return "index";
     }
 
-
     @ResponseBody
     @PreAuthorize("isAuthenticated() || hasAuthority('create')")
     @RequestMapping("/user")

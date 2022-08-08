@@ -1,12 +1,16 @@
 package olcha.uz.onlineShop.controller.productController;
 
 import lombok.RequiredArgsConstructor;
+import olcha.uz.onlineShop.configs.security.UserDetails;
+import olcha.uz.onlineShop.domains.Basket_Item;
 import olcha.uz.onlineShop.domains.poduct.Product;
 import olcha.uz.onlineShop.dto.ProductCreateDto;
 import olcha.uz.onlineShop.dto.ProductUpdateDto;
+import olcha.uz.onlineShop.services.BasketItemService;
 import olcha.uz.onlineShop.services.CategoryService;
 import olcha.uz.onlineShop.services.ProductService;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +18,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -26,26 +32,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
-    private final CategoryService categoryService;
+    private final BasketItemService basketItemService;
 
 
     @GetMapping("/basket")
-    public String ProductPage(Model model) {
-        List<Product> products=productService.findAllByTrue();
+    public String ProductPage(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+        List<Basket_Item> basketItems=new ArrayList<>();
+        if (Objects.nonNull(userDetails)){
+           basketItems = basketItemService.findAllUserId(userDetails.getId());
+        }
+        List<Product> products=productService.findAllBasketItemsId(basketItems);
         model.addAttribute("products",products);
         return "views/basket";
     }
 
-    @GetMapping("/{id}")
-    public String saveCartPage(@PathVariable Long id) {
-        productService.saveToBasket(id);
-        return "redirect:/";
-    }
 
     @GetMapping("/cancel/{id}")
     public String cancelCartPage(@PathVariable Long id) {
         productService.cancelToBasket(id);
-        return "redirect:/";
+        return "redirect:/views/basket";
     }
     @GetMapping(value = "/product")
     public String productPage(Model model) {

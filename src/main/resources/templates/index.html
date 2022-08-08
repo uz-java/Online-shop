@@ -77,7 +77,7 @@
                         <h5 class="card-title" th:text="${product.name}"></h5>
                         <i style="display:block;">Description : <i th:text="${product.description}"></i></i>
                         <i style="display:block;">Price : <i th:text="${product.price}"></i></i>
-                        <a class="btn btn-warning" th:href="@{'/views/'+${product.id}}" th:text="#{Add.to.basket}"></a>
+                        <a class="btn btn-warning" th:href="@{'/views/basket'+${product.id}}" th:text="#{Add.to.basket}"></a>
                         <br>
                         <a sec:authorize="isAuthenticated() && hasRole('ADMIN')"  class="btn btn-success" th:href="@{'/views/productUpdate'}" th:text="#{Update}"></a>
                     </div>

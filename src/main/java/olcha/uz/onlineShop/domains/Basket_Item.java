@@ -20,17 +20,16 @@ import javax.persistence.*;
 @Builder
 @Table(name = "basket")
 @Entity
-public class Basket {
+public class Basket_Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-
-    @OneToOne(targetEntity = AuthUser.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "authUser_id")
+    @ManyToOne
     private AuthUser authUser;
-
-    @OneToOne(targetEntity = Product.class,fetch = FetchType.EAGER)
-     @JoinColumn(name = "product_id")
+    @ManyToOne
     private Product product;
+
+    @Column(nullable = false, columnDefinition = "bool default true")
+    private boolean active;
 }

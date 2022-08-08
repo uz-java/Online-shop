@@ -20,10 +20,10 @@
             <i style="display:block;">Description : <i th:text="${product.description}"></i></i>
             <i style="display:block;">Price : <i th:text="${product.price}"></i></i>
 
+
             <a class="btn btn-secondary" th:href="@{'/views/cancel/'+${product.id}}" th:text="#{Cancel}"></a>
             <br>
-            <a class="btn btn-warning" th:href="@{'#'}" th:text="#{Buy}"></a>
-
+            <a class="btn btn-warning" th:href="@{'/views/buy/'+${product.id}}" th:text="#{Buy}"></a>
           </div>
         </div>
       </div>

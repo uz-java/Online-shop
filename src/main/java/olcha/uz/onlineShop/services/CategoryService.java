@@ -44,7 +44,4 @@ public class  CategoryService {
         categoryRepository.save(category);
     }
 
-    public List<Category> findAll() {
-        return categoryRepository.findAll();
-    }
 }

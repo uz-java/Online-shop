@@ -37,7 +37,4 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private FavoritesStatus status = FavoritesStatus.UNLIKE;
 
-    @Column(nullable = false, columnDefinition = "bool default true")
-    private boolean active;
-
 }
