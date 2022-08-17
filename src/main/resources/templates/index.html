@@ -70,7 +70,7 @@
         <th:block th:each="product, counter: ${productList}">
             <div class="col-2">
                 <div class="card p-2 baseBlock" style="width: 100%">
-                        <img class="card-img-top" th:src="${product.image.path}" width="240"
+                        <img class="card-img-top" th:src="@{${product.image.path}}" width="240"
                              height="120"
                              alt="Card image cap">
                     <div class="card-body">

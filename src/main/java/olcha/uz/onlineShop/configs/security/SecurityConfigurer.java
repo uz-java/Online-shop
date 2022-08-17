@@ -43,6 +43,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //http.authorizeRequests(expressionInterceptUrlRegistry ->
         http.csrf().disable().authorizeRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .antMatchers(WHITE_LIST).permitAll()
