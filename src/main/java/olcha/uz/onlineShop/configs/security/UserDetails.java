@@ -37,7 +37,7 @@ public class UserDetails implements org.springframework.security.core.userdetail
     }
 
     @Override
-    public String getUsername() {
+    public  String getUsername() {
         return user.getUsername();
     }
 
@@ -59,5 +59,9 @@ public class UserDetails implements org.springframework.security.core.userdetail
     @Override
     public boolean isEnabled() {
         return user.isActive();
+    }
+
+    public Long getId(){
+        return user.getId();
     }
 }

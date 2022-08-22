@@ -20,7 +20,7 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+     private Long id;
     private String city;
     private String street;
     private String apartment;

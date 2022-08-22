@@ -37,6 +37,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private FavoritesStatus status = FavoritesStatus.UNLIKE;
 
-    @ManyToOne
-    private Category category;
+    @Column(nullable = false, columnDefinition = "bool default true")
+    private boolean active;
+
 }

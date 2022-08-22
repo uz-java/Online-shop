@@ -9,6 +9,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.List;
@@ -25,7 +26,7 @@ public class DBInitializer implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext context) throws BeansException {
 
         AuthRoleRepository authRoleRepository = context.getBean(AuthRoleRepository.class);
-        AuthPermissionRepository authPermissionRepository = context.getBean(AuthPermissionRepository.class);
+         AuthPermissionRepository authPermissionRepository = context.getBean(AuthPermissionRepository.class);
         AuthRepository repository = context.getBean(AuthRepository.class);
         authPermissionRepository.deleteAll();
         authRoleRepository.deleteAll();

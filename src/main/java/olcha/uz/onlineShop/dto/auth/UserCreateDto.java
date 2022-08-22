@@ -20,7 +20,7 @@ public class UserCreateDto {
     private String fullName;
     @NotBlank(message = "{NotBlank.Username}")
     private String username;
-    @NotBlank(message = "{NotBlank.Password}")
+     @NotBlank(message = "{NotBlank.Password}")
     private String password;
     @NotBlank(message = "{NotBlank.ConfirmPassword}")
     private String confirmPassword;

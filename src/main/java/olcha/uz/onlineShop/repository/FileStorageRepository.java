@@ -10,6 +10,7 @@ import java.util.Optional;
  * @since 06/08/22 14:34 (Saturday)
  * SpringMyProject/IntelliJ IDEA
  */
-public interface FileStorageRepository extends JpaRepository<Uploads,Long> {
+public interface  FileStorageRepository extends JpaRepository<Uploads,Long> {
     Optional<Uploads> findByGeneratedName(String generatedName);
+    Optional<Uploads> findById(Long id);
 }

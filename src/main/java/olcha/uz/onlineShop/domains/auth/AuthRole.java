@@ -21,7 +21,7 @@ public class AuthRole implements GrantedAuthority {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String code;
+     private String code;
 
     @Column(nullable = false)
     private String name;

@@ -2,12 +2,18 @@ package olcha.uz.onlineShop.controller;
 
 import lombok.RequiredArgsConstructor;
 import olcha.uz.onlineShop.configs.security.UserDetails;
+import olcha.uz.onlineShop.domains.Category;
+import olcha.uz.onlineShop.domains.poduct.Product;
+import olcha.uz.onlineShop.services.CategoryService;
 import olcha.uz.onlineShop.services.ProductService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @author "Tojaliyev Asliddin"
@@ -21,31 +27,11 @@ public class HomeController {
 
     @RequestMapping(value = "")
     @PreAuthorize("permitAll()")
-    public String homePage() {
+     public String homePage(Model model) {
+        List<Product> productList=productService.findAll();
+        model.addAttribute("productList",productList);
         return "index";
     }
-
-
-
-/*    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping("/admin")
-    public String admin() {
-        return "admin";
-    }*/
-
-  /*  @ResponseBody
-    @PreAuthorize("hasRole('MANAGER')")
-    @RequestMapping("/mana")
-    public String manager() {
-        return "MANAGER PAGE";
-    }
-
-    @ResponseBody
-    @PreAuthorize("hasAnyRole('ADMIN','MANAGER')")
-    @RequestMapping("/admin-manager")
-    public String adminManager() {
-        return "ADMIN AND MANAGER PAGE";
-    }*/
 
     @ResponseBody
     @PreAuthorize("isAuthenticated() || hasAuthority('create')")

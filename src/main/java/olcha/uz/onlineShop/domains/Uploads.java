@@ -27,8 +27,4 @@ public class Uploads {
     private long size;
     private String contentType;
 
-
- /*   @OneToOne(targetEntity = Product.class,fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
-    private Product product;*/
 }

@@ -8,7 +8,7 @@
 
             <div class="form-group">
                 <label for="forName" th:text="#{ProductName}"></label>
-                <input type="text" name="name" class="form-control" th:field="*{name}" id="forName">
+                 <input type="text" name="name" class="form-control" th:field="*{name}" id="forName">
                 <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
             </div>
 

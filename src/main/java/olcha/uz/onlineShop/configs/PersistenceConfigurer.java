@@ -54,7 +54,7 @@ public class PersistenceConfigurer {
     }
 
     @Bean
-    public DataSource dataSource() {
+    public  DataSource dataSource() {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(Objects.requireNonNull(env.getProperty("spring.datasource.driver")));
         dataSource.setJdbcUrl(env.getProperty("spring.datasource.url"));

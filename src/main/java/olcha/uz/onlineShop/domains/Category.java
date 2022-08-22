@@ -24,16 +24,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String code;
 
-    @ManyToMany(targetEntity = Vendor.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    @JoinTable(
-            joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "vendor_id", referencedColumnName = "id")
-    )
-    List<Vendor> vendors = new ArrayList<>();
+    @OneToOne
+    private Uploads image;
 
 }

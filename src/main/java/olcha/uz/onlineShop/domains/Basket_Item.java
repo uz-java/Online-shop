@@ -1,13 +1,14 @@
 package olcha.uz.onlineShop.domains;
 
 import lombok.*;
+import olcha.uz.onlineShop.domains.auth.AuthUser;
+import olcha.uz.onlineShop.domains.poduct.Product;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 /**
  * @author "Tojaliyev Asliddin"
- * @since 04/08/22 08:36 (Thursday)
+ * @since 04/08/22 11:17 (Thursday)
  * SpringMyProject/IntelliJ IDEA
  */
 
@@ -17,17 +18,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 @Builder
-@Table(name = "vendor")
+@Table(name = "basket")
 @Entity
-
-public class Vendor {
-
+public class Basket_Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String notion_food;
-    private LocalDateTime delivery_time_from;
-    private LocalDateTime delivery_time_to;
-    private Double delivery_price;
+    private Integer quantity;
+    @ManyToOne
+    private AuthUser authUser;
+    @ManyToOne
+    private Product product;
 }

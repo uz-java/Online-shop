@@ -17,7 +17,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler({NoHandlerFoundException.class})
+     @ExceptionHandler({NoHandlerFoundException.class})
     public String handler_404(NoHandlerFoundException e) {
         return "error/404";
     }

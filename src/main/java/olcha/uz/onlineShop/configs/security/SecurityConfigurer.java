@@ -27,12 +27,15 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     public static final String[] WHITE_LIST = new String[]{
             "/",
             "/auth/login",
+            "/views/basket",
+            "/views/productUpdate",
             "/auth/register",
-            "/static/**"
+            "/static/**",
+            "/apps/onlineShop/**"
     };
 
     @Value("${spring.security.rememberme.secret.key}")
-    public String SECRET_KEY;
+    public  String SECRET_KEY;
 
     private final AuthService authService;
     private final PasswordEncoder passwordEncoder;
@@ -40,6 +43,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //http.authorizeRequests(expressionInterceptUrlRegistry ->
         http.csrf().disable().authorizeRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
                                 .antMatchers(WHITE_LIST).permitAll()
@@ -74,7 +78,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                                 .clearAuthentication(true)
                                 .invalidateHttpSession(true)
 
-                );//                .authenticationEntryPoint(authenticationEntryPoint);
+                );//.authenticationEntryPoint(authenticationEntryPoint);
     }
 
 

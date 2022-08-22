@@ -2,17 +2,21 @@ package olcha.uz.onlineShop.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.Positive;
+
 /**
  * @author "Tojaliyev Asliddin"
- * @since 04/08/22 17:59 (Thursday)
+ * @since 08/08/22 10:22 (Monday)
  * SpringMyProject/IntelliJ IDEA
  */
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+public class BasketItemDto {
 
-public class CategoryCreateDto {
-    private String name;
+    @Positive(message = "{Positive.Quantity}")
+    private Integer quantity;
 }
