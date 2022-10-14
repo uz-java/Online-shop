@@ -15,10 +15,10 @@ Online bookstore is a web application built by using JAVA CORE, Spring Framework
 
 ### datasource config
 ```
-        spring.datasource.url=jdbc:postgresql://localhost:5432/ProjectName
-        spring.datasource.username=username
-        spring.datasource.password=password
-        spring.datasource.driver=org.postgresql.Driver
+spring.datasource.url=jdbc:postgresql://localhost:5432/ProjectName
+spring.datasource.username=username
+spring.datasource.password=password
+spring.datasource.driver=org.postgresql.Driver
         
 ```
 <br>
