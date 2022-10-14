@@ -35,6 +35,22 @@ hibernate.idle.count=10
 hibernate.idle.timeout=600000
         
 ```
+<br>
+
+### Dependencies that we will need
+```
+         <dependency>
+            <groupId>org.springframework</groupId>
+             <artifactId>spring-webmvc</artifactId>
+            <version>5.3.21</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+        
+```
 
 ------------
 
