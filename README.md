@@ -1,4 +1,4 @@
-# Online Bookstore
+# Online shop
 Online bookstore is a web application built by using Java CORE, Spring Framework with MVC architecture. On the database side, PostgreSQL Server has been used.
 
 
