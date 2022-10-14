@@ -13,19 +13,26 @@ Online bookstore is a web application built by using JAVA CORE, Spring Framework
 - The code that has been sent to the registered phone number is typed. (No code being sent to the user, it's just the template for now)
 - Finally, Order Summary is created and welcomed to the Customer. If the details of the Order is required, the Order Details button must be clicked.
 
-
+### datasource config
 ```
+        spring.datasource.url=jdbc:postgresql://localhost:5432/ProjectName
+        spring.datasource.username=username
+        spring.datasource.password=password
+        spring.datasource.driver=org.postgresql.Driver
         
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-graphql</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.springframework.graphql</groupId>
-            <artifactId>spring-graphql-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+```
+<br>
+
+### hibernate config
+```
+hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+hibernate.show_sql=true
+hibernate.hbm2ddl.auto=update
+hibernate.cache.use_second_level_cache=false
+hibernate.cache.use_query_cache=false
+hibernate.maximum.pool.size=20
+hibernate.idle.count=10
+hibernate.idle.timeout=600000
         
 ```
 
