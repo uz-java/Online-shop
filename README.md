@@ -19,9 +19,14 @@ Mostly focused on database management in this project. The frontend side of the 
 
 ### Home Page
 ------------
-![page2](readme/page2.png)
+![page1](page1.png)
+![page2](page2.png)
 
  ### Login/Register Page
+------------
+![register](register.png)
+
+ ### Product add
 ------------
 ![page2](readme/page2.png)
 
