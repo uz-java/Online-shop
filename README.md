@@ -22,15 +22,15 @@ Mostly focused on database management in this project. The frontend side of the 
 ![p1](p1.png)
 ![p2](p2.png)
 
- ### Register
+ ### Register Page
 ------------
 ![register](register.png)
 
- ### Login
+ ### Login Page
 ------------
 ![login](login.png)
 
- ### Product add
+ ### Product add Page
 ------------
 ![p3](p3.png)
 
