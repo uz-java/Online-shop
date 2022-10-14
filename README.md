@@ -1,7 +1,6 @@
 # Online Bookstore
-Online bookstore is a web application built by using .NET CORE, Entity Framework with MVC architecture. On the database side, MS SQL Server has been used.
+Online bookstore is a web application built by using Java CORE, Spring Framework with MVC architecture. On the database side, PostgreSQL Server has been used.
 
-Mostly focused on database management in this project. The frontend side of the project will be improved later on.
 
 ------------
 
