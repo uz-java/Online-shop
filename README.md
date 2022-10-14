@@ -16,15 +16,12 @@ Mostly focused on database management in this project. The frontend side of the 
 
 
 ------------
-### Screenshots
 
-![Home Page](https://i.hizliresim.com/ipu0va.png)
-- *Home Page*
-
+### Home Page
 ------------
-![Login/Register Page](https://i.hizliresim.com/ffLpIr.png)
-- *Login/Register Page*
+![page2](readme/page2.png)
 
+ ### Login/Register Page
 ------------
 ![Cart Screen](https://i.hizliresim.com/cVmvRV.png)
 - *Cart Screen*
