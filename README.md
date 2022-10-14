@@ -14,6 +14,21 @@ Online bookstore is a web application built by using JAVA CORE, Spring Framework
 - Finally, Order Summary is created and welcomed to the Customer. If the details of the Order is required, the Order Details button must be clicked.
 
 
+```
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.graphql</groupId>
+            <artifactId>spring-graphql-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+```
+
 ------------
 
 ### Home Page
