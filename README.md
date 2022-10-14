@@ -19,19 +19,25 @@ Mostly focused on database management in this project. The frontend side of the 
 
 ### Home Page
 ------------
-![page1](page1.png)
-![page2](page2.png)
+![p1](p1.png)
+![p2](p2.png)
 
- ### Login/Register Page
+ ### Register
 ------------
 ![register](register.png)
 
+ ### Login
+------------
+![login](login.png)
+
  ### Product add
 ------------
-![page2](readme/page2.png)
+![p3](p3.png)
 
 ### Cart Screen
 ------------
 ![Payment Screen](https://i.hizliresim.com/BjhUO1.png)
 
 ### Basket Screen
+------------
+![basket](basket.png)
