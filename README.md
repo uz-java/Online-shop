@@ -23,9 +23,10 @@ Mostly focused on database management in this project. The frontend side of the 
 
  ### Login/Register Page
 ------------
-![Cart Screen](https://i.hizliresim.com/cVmvRV.png)
-- *Cart Screen*
+![page2](readme/page2.png)
 
+### Cart Screen
 ------------
 ![Payment Screen](https://i.hizliresim.com/BjhUO1.png)
-- *Payment Screen*
+
+### Basket Screen
